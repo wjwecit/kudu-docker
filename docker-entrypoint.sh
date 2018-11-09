@@ -28,7 +28,6 @@ KUDU_OPTS=${KUDU_OPTS:-${DEFAULT_KUDU_OPTS}}
 if [ "$1" = 'master' ]; then
   exec kudu-master -fs_wal_dir /var/lib/kudu/master ${KUDU_OPTS}
 elif [ "$1" = 'tserver' ]; then
-  KUDU_TSERVER_ADDRESS=127.0.0.1:7050
   export FLAGS_rpc_bind_addresses=${KUDU_TSERVER_ADDRESS}
   exec kudu-tserver -fs_wal_dir /var/lib/kudu/tserver \
   -tserver_master_addrs ${KUDU_MASTER} ${KUDU_OPTS}
